@@ -129,6 +129,95 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Reviews Section */}
+      <section className="container mx-auto px-4 py-16 bg-gradient-secondary/30">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+            What Users Say
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            Don't just take our word for it - see what our users have to say
+          </p>
+        </div>
+        
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[
+            {
+              name: "Sarah Johnson",
+              role: "Designer",
+              rating: 5,
+              review: "This app has completely transformed how I work. The interface is so intuitive and beautiful. I can't imagine going back to anything else!"
+            },
+            {
+              name: "Michael Chen",
+              role: "Developer",
+              rating: 5,
+              review: "Outstanding performance and design. The attention to detail is incredible. This is exactly what I was looking for in a mobile app."
+            },
+            {
+              name: "Emma Wilson",
+              role: "Student",
+              rating: 5,
+              review: "Love the clean design and smooth animations. It's so easy to use and has all the features I need. Highly recommend to everyone!"
+            },
+            {
+              name: "David Rodriguez",
+              role: "Business Owner",
+              rating: 4,
+              review: "Great app with excellent functionality. The user experience is top-notch. It has really helped streamline my daily workflow."
+            },
+            {
+              name: "Lisa Anderson",
+              role: "Marketing Manager",
+              rating: 5,
+              review: "Simply amazing! The app is fast, reliable, and beautifully designed. The customer support is also fantastic. Five stars!"
+            },
+            {
+              name: "James Park",
+              role: "Freelancer",
+              rating: 5,
+              review: "This app exceeded all my expectations. The modern design and smooth performance make it a joy to use every day."
+            }
+          ].map((review, index) => (
+            <Card key={index} className="p-6 bg-card/50 border-primary/20 hover:shadow-card transition-all duration-300">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center text-foreground font-semibold">
+                  {review.name.split(' ').map(n => n[0]).join('')}
+                </div>
+                <div>
+                  <h4 className="font-semibold">{review.name}</h4>
+                  <p className="text-sm text-muted-foreground">{review.role}</p>
+                </div>
+              </div>
+              
+              <div className="flex mb-3">
+                {[...Array(5)].map((_, i) => (
+                  <Star 
+                    key={i} 
+                    className={`w-4 h-4 ${i < review.rating ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground/30'}`} 
+                  />
+                ))}
+              </div>
+              
+              <p className="text-muted-foreground italic">"{review.review}"</p>
+            </Card>
+          ))}
+        </div>
+        
+        <div className="text-center mt-12">
+          <div className="inline-flex items-center gap-4 bg-card/30 rounded-full px-6 py-3 border border-primary/20">
+            <div className="flex">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+              ))}
+            </div>
+            <span className="text-lg font-semibold">4.9 out of 5</span>
+            <span className="text-muted-foreground">•</span>
+            <span className="text-muted-foreground">2,847 reviews</span>
+          </div>
+        </div>
+      </section>
+
       {/* Download Section */}
       <section className="container mx-auto px-4 py-16">
         <Card className="bg-gradient-secondary border-primary/20 text-center p-12">
